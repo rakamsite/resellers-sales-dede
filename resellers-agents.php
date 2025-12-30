@@ -470,7 +470,6 @@ function rs_agents_render_shortcode($atts) {
                         <?php if ($type) : ?>
                             <p class="rs-agent-type"><?php echo $type; ?></p>
                         <?php endif; ?>
-                        <p class="rs-agent-city"><?php echo $city; ?></p>
                         <div class="rs-agent-contacts">
                             <?php if ($site) : ?>
                                 <a class="rs-agent-contact-link" href="<?php echo $site; ?>" target="_blank" rel="noopener" aria-label="سایت">
