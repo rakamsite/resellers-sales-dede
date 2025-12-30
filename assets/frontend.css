@@ -112,7 +112,7 @@
 
 .rs-agent-company {
   margin: 0;
-  font-size: 15px;
+  font-size: 18px;
   color: #475467;
 }
 
@@ -153,15 +153,16 @@
 }
 
 .rs-agent-avatar {
-  width: 100%;
-  height: 200px;
-  border-radius: 16px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
   overflow: hidden;
   background: #f2f4f7;
   display: flex;
   align-items: center;
   justify-content: center;
-  align-self: stretch;
+  align-self: start;
+  justify-self: center;
   grid-area: avatar;
 }
 
@@ -187,17 +188,17 @@
 
 @media (min-width: 900px) {
   .rs-agent-card {
-    grid-template-columns: minmax(160px, 1fr) minmax(200px, 1.2fr) 120px;
+    grid-template-columns: minmax(160px, 1fr) minmax(220px, 1.4fr) 100px;
     grid-template-areas: "info details avatar";
   }
 
   .rs-agent-card-info {
-    border-right: 1px solid #e4e7ec;
-    padding-right: 20px;
+    border-left: 1px solid #e4e7ec;
+    padding-left: 20px;
   }
   .rs-agent-avatar {
-    width: 120px;
-    height: 100%;
+    width: 100px;
+    height: 100px;
   }
 }
 
@@ -207,7 +208,7 @@
   }
 
   .rs-agent-avatar {
-    height: 200px;
+    height: 100px;
   }
 
 }
