@@ -40,6 +40,8 @@
   padding: 12px 16px;
   border-radius: 12px;
   background: #f7f7f8;
+  flex-direction: row-reverse;
+  text-align: right;
 }
 
 .rs-agent-icon {
@@ -50,6 +52,8 @@
   flex: 1;
   color: #344054;
   font-weight: 600;
+  direction: ltr;
+  text-align: right;
 }
 
 .rs-agent-text a {
@@ -63,6 +67,8 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+  flex-direction: row-reverse;
+  text-align: right;
 }
 
 .rs-agent-details {
@@ -76,6 +82,18 @@
   color: #1d2939;
 }
 
+.rs-agent-company {
+  margin: 0;
+  font-size: 15px;
+  color: #475467;
+}
+
+.rs-agent-type {
+  margin: 0;
+  font-size: 14px;
+  color: #667085;
+}
+
 .rs-agent-city {
   margin: 0;
   color: #475467;
@@ -85,20 +103,30 @@
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
+  align-items: center;
 }
 
-.rs-agent-contacts a {
-  padding: 8px 12px;
+.rs-agent-contact-link {
+  width: 32px;
+  height: 32px;
   border-radius: 999px;
   background: #f2f4f7;
-  color: #344054;
+  color: #98a2b3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   text-decoration: none;
-  font-weight: 600;
+}
+
+.rs-agent-contact-link svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
 }
 
 .rs-agent-avatar {
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   overflow: hidden;
   background: #f2f4f7;
@@ -133,8 +161,8 @@
   }
 
   .rs-agent-card-info {
-    border-right: 1px solid #e4e7ec;
-    padding-right: 20px;
+    border-left: 1px solid #e4e7ec;
+    padding-left: 20px;
   }
 }
 
@@ -149,7 +177,7 @@
   }
 
   .rs-agent-avatar {
-    width: 90px;
-    height: 90px;
+    width: 100px;
+    height: 100px;
   }
 }
