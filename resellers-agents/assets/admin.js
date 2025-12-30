@@ -1,6 +1,14 @@
 jQuery(function ($) {
   const container = $('[data-agents-container]');
   const template = document.getElementById('rs-agent-template');
+  const toggle = $('[data-agents-toggle]');
+  const fields = $('[data-agents-fields]');
+  const addButton = $('[data-add-agent]');
+
+  function setFieldsVisibility(enabled) {
+    fields.toggle(enabled);
+    addButton.toggle(enabled);
+  }
 
   function bindItem(item) {
     item.find('[data-remove-agent]').on('click', function () {
@@ -34,6 +42,12 @@ jQuery(function ($) {
   container.find('[data-agent-item]').each(function () {
     bindItem($(this));
   });
+
+  toggle.on('change', function () {
+    setFieldsVisibility($(this).is(':checked'));
+  });
+
+  setFieldsVisibility(toggle.is(':checked'));
 
   $('[data-add-agent]').on('click', function () {
     const index = container.find('[data-agent-item]').length;

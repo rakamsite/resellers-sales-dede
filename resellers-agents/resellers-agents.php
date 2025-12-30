@@ -11,6 +11,7 @@ if (!defined('ABSPATH')) {
 }
 
 const RS_AGENTS_META_KEY = '_rs_agents';
+const RS_AGENTS_ENABLED_META_KEY = '_rs_agents_enabled';
 
 function rs_agents_get_default_avatar_url() {
     return plugin_dir_url(__FILE__) . 'assets/default-avatar.svg';
@@ -58,9 +59,16 @@ function rs_agents_render_meta_box($post) {
     if (!is_array($agents)) {
         $agents = [];
     }
+    $enabled = get_post_meta($post->ID, RS_AGENTS_ENABLED_META_KEY, true) === '1';
+    $fields_style = $enabled ? '' : 'style="display:none;"';
     ?>
+    <label>
+        <input type="checkbox" name="rs_agents_enabled" value="1" data-agents-toggle <?php checked($enabled); ?> />
+        اضافه کردن نماینده یا عامل فروش
+    </label>
     <div class="rs-agents-meta-box" data-agents-container>
-        <?php foreach ($agents as $index => $agent) :
+        <div data-agents-fields <?php echo $fields_style; ?>>
+            <?php foreach ($agents as $index => $agent) :
             $name = isset($agent['name']) ? esc_attr($agent['name']) : '';
             $mobile = isset($agent['mobile']) ? esc_attr($agent['mobile']) : '';
             $phone = isset($agent['phone']) ? esc_attr($agent['phone']) : '';
@@ -111,9 +119,10 @@ function rs_agents_render_meta_box($post) {
                 </div>
                 <button type="button" class="button-link rs-agent-remove" data-remove-agent>حذف نماینده</button>
             </div>
-        <?php endforeach; ?>
+            <?php endforeach; ?>
+        </div>
     </div>
-    <button type="button" class="button button-primary" data-add-agent>افزودن نماینده</button>
+    <button type="button" class="button button-primary" data-add-agent <?php echo $fields_style; ?>>افزودن نماینده</button>
 
     <template id="rs-agent-template">
         <div class="rs-agent-item" data-agent-item>
@@ -167,6 +176,15 @@ function rs_agents_save_meta($post_id) {
     if (!current_user_can('edit_post', $post_id)) {
         return;
     }
+
+    $enabled = isset($_POST['rs_agents_enabled']) && $_POST['rs_agents_enabled'] === '1';
+    if (!$enabled) {
+        delete_post_meta($post_id, RS_AGENTS_META_KEY);
+        delete_post_meta($post_id, RS_AGENTS_ENABLED_META_KEY);
+        return;
+    }
+
+    update_post_meta($post_id, RS_AGENTS_ENABLED_META_KEY, '1');
 
     if (!isset($_POST['rs_agents']) || !is_array($_POST['rs_agents'])) {
         delete_post_meta($post_id, RS_AGENTS_META_KEY);
