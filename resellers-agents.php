@@ -459,9 +459,49 @@ function rs_agents_render_shortcode($atts) {
                 $city = isset($agent['city']) ? esc_html($agent['city']) : '';
                 ?>
                 <div class="rs-agent-card" data-agent-card data-name="<?php echo esc_attr($name); ?>" data-city="<?php echo esc_attr($city); ?>">
+                    <div class="rs-agent-avatar">
+                        <img src="<?php echo esc_url($avatar_url); ?>" alt="<?php echo esc_attr($name ? $name : 'نماینده'); ?>" />
+                    </div>
+                    <div class="rs-agent-details">
+                        <h3><?php echo $name; ?></h3>
+                        <?php if ($company) : ?>
+                            <p class="rs-agent-company"><?php echo $company; ?></p>
+                        <?php endif; ?>
+                        <?php if ($type) : ?>
+                            <p class="rs-agent-type"><?php echo $type; ?></p>
+                        <?php endif; ?>
+                        <p class="rs-agent-city"><?php echo $city; ?></p>
+                        <div class="rs-agent-contacts">
+                            <?php if ($site) : ?>
+                                <a class="rs-agent-contact-link" href="<?php echo $site; ?>" target="_blank" rel="noopener" aria-label="سایت">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm6.93 9h-3.07a15.8 15.8 0 00-1.25-5.02A8.03 8.03 0 0118.93 11zM12 4.07c.9 1.2 1.7 3.22 1.97 4.93h-3.94C10.3 7.29 11.1 5.27 12 4.07zM5.07 13h3.07c.25 1.82.79 3.55 1.58 4.88A8.03 8.03 0 015.07 13zm3.07-2H5.07a8.03 8.03 0 014.58-5.02A15.8 15.8 0 008.14 11zm3.86 8.93c-.92-1.21-1.74-3.26-2.02-4.93h4.04c-.28 1.67-1.1 3.72-2.02 4.93zM15.35 18a15.87 15.87 0 001.51-5h3.07A8.03 8.03 0 0115.35 18zm-1.29-7H9.94c-.3 1.87-.26 3.71 0 5h4.12c.26-1.29.3-3.13 0-5z"/></svg>
+                                </a>
+                            <?php endif; ?>
+                            <?php if ($instagram) : ?>
+                                <a class="rs-agent-contact-link" href="<?php echo $instagram; ?>" target="_blank" rel="noopener" aria-label="اینستاگرام">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3h10a4 4 0 014 4v10a4 4 0 01-4 4H7a4 4 0 01-4-4V7a4 4 0 014-4zm0 2a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2H7zm5 3.5A4.5 4.5 0 1112 17.5 4.5 4.5 0 0112 8.5zm0 2A2.5 2.5 0 1014.5 13 2.5 2.5 0 0012 10.5zm5.25-3.75a1 1 0 11-1 1 1 1 0 011-1z"/></svg>
+                                </a>
+                            <?php endif; ?>
+                            <?php if ($telegram) : ?>
+                                <a class="rs-agent-contact-link" href="<?php echo $telegram; ?>" target="_blank" rel="noopener" aria-label="تلگرام">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.6 4.2a1 1 0 00-1.04-.19L2.6 11.1a1 1 0 00.06 1.87l4.46 1.7 1.7 5.36a1 1 0 001.65.4l2.8-2.8 4.78 3.52a1 1 0 001.57-.6l3.02-14a1 1 0 00-.04-.35zM8.9 13.7l8.96-5.62-6.76 6.92-.25 2.76-1.32-4.06-.63-.23z"/></svg>
+                                </a>
+                            <?php endif; ?>
+                            <?php if ($whatsapp) : ?>
+                                <a class="rs-agent-contact-link" href="<?php echo $whatsapp; ?>" target="_blank" rel="noopener" aria-label="واتساپ">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.02 2a9.96 9.96 0 00-8.62 14.95L2 22l5.2-1.36A9.97 9.97 0 1012.02 2zm5.78 15.1c-.24.68-1.2 1.32-1.88 1.44-.48.08-1.1.12-1.78-.1-.4-.12-.9-.3-1.55-.58-2.72-1.2-4.5-3.96-4.64-4.14-.14-.18-1.1-1.46-1.1-2.78 0-1.32.68-1.96.92-2.22.24-.26.52-.32.7-.32.18 0 .36 0 .52.02.18.02.42-.08.66.5.24.58.82 2 .9 2.14.08.14.14.3.02.48-.12.18-.18.3-.34.48-.16.18-.34.4-.48.54-.16.14-.32.3-.14.6.18.3.8 1.32 1.72 2.14 1.18 1.04 2.16 1.36 2.46 1.5.3.14.48.12.66-.08.18-.2.76-.88.96-1.18.2-.3.4-.24.68-.14.28.1 1.76.82 2.06.98.3.16.5.24.58.38.08.14.08.8-.16 1.48z"/></svg>
+                                </a>
+                            <?php endif; ?>
+                        </div>
+                    </div>
                     <div class="rs-agent-card-info">
                         <div class="rs-agent-row">
-                            <span class="rs-agent-icon">📱</span>
+                            <span class="rs-agent-icon">
+                                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 2.25h3A2.25 2.25 0 0115.75 4.5v15A2.25 2.25 0 0113.5 21.75h-3A2.25 2.25 0 018.25 19.5v-15A2.25 2.25 0 0110.5 2.25z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01" />
+                                </svg>
+                            </span>
                             <span class="rs-agent-text">
                                 <?php if ($mobile) : ?>
                                     <a href="tel:<?php echo esc_attr($mobile); ?>"><?php echo $mobile; ?></a>
@@ -469,7 +509,11 @@ function rs_agents_render_shortcode($atts) {
                             </span>
                         </div>
                         <div class="rs-agent-row">
-                            <span class="rs-agent-icon">☎️</span>
+                            <span class="rs-agent-icon">
+                                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 7.32 5.93 13.25 13.25 13.25h1.5a2.25 2.25 0 002.25-2.25v-2.06a2.25 2.25 0 00-1.64-2.16l-2.65-.76a2.25 2.25 0 00-2.43.86l-.6.8a10.1 10.1 0 01-4.48-4.48l.8-.6a2.25 2.25 0 00.86-2.43l-.76-2.65A2.25 2.25 0 006.81 2.25H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                                </svg>
+                            </span>
                             <span class="rs-agent-text">
                                 <?php if ($phone) : ?>
                                     <a href="tel:<?php echo esc_attr($phone); ?>"><?php echo $phone; ?></a>
@@ -477,45 +521,13 @@ function rs_agents_render_shortcode($atts) {
                             </span>
                         </div>
                         <div class="rs-agent-row">
-                            <span class="rs-agent-icon">📍</span>
+                            <span class="rs-agent-icon">
+                                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 21s7.5-6.75 7.5-12a7.5 7.5 0 10-15 0c0 5.25 7.5 12 7.5 12z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 11.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z" />
+                                </svg>
+                            </span>
                             <span class="rs-agent-text"><?php echo $address; ?></span>
-                        </div>
-                    </div>
-                    <div class="rs-agent-card-main">
-                        <div class="rs-agent-details">
-                            <h3><?php echo $name; ?></h3>
-                            <?php if ($company) : ?>
-                                <p class="rs-agent-company"><?php echo $company; ?></p>
-                            <?php endif; ?>
-                            <?php if ($type) : ?>
-                                <p class="rs-agent-type"><?php echo $type; ?></p>
-                            <?php endif; ?>
-                            <p class="rs-agent-city"><?php echo $city; ?></p>
-                            <div class="rs-agent-contacts">
-                                <?php if ($site) : ?>
-                                    <a class="rs-agent-contact-link" href="<?php echo $site; ?>" target="_blank" rel="noopener" aria-label="سایت">
-                                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm6.93 9h-3.07a15.8 15.8 0 00-1.25-5.02A8.03 8.03 0 0118.93 11zM12 4.07c.9 1.2 1.7 3.22 1.97 4.93h-3.94C10.3 7.29 11.1 5.27 12 4.07zM5.07 13h3.07c.25 1.82.79 3.55 1.58 4.88A8.03 8.03 0 015.07 13zm3.07-2H5.07a8.03 8.03 0 014.58-5.02A15.8 15.8 0 008.14 11zm3.86 8.93c-.92-1.21-1.74-3.26-2.02-4.93h4.04c-.28 1.67-1.1 3.72-2.02 4.93zM15.35 18a15.87 15.87 0 001.51-5h3.07A8.03 8.03 0 0115.35 18zm-1.29-7H9.94c-.3 1.87-.26 3.71 0 5h4.12c.26-1.29.3-3.13 0-5z"/></svg>
-                                    </a>
-                                <?php endif; ?>
-                                <?php if ($instagram) : ?>
-                                    <a class="rs-agent-contact-link" href="<?php echo $instagram; ?>" target="_blank" rel="noopener" aria-label="اینستاگرام">
-                                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3h10a4 4 0 014 4v10a4 4 0 01-4 4H7a4 4 0 01-4-4V7a4 4 0 014-4zm0 2a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2H7zm5 3.5A4.5 4.5 0 1112 17.5 4.5 4.5 0 0112 8.5zm0 2A2.5 2.5 0 1014.5 13 2.5 2.5 0 0012 10.5zm5.25-3.75a1 1 0 11-1 1 1 1 0 011-1z"/></svg>
-                                    </a>
-                                <?php endif; ?>
-                                <?php if ($telegram) : ?>
-                                    <a class="rs-agent-contact-link" href="<?php echo $telegram; ?>" target="_blank" rel="noopener" aria-label="تلگرام">
-                                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.6 4.2a1 1 0 00-1.04-.19L2.6 11.1a1 1 0 00.06 1.87l4.46 1.7 1.7 5.36a1 1 0 001.65.4l2.8-2.8 4.78 3.52a1 1 0 001.57-.6l3.02-14a1 1 0 00-.04-.35zM8.9 13.7l8.96-5.62-6.76 6.92-.25 2.76-1.32-4.06-.63-.23z"/></svg>
-                                    </a>
-                                <?php endif; ?>
-                                <?php if ($whatsapp) : ?>
-                                    <a class="rs-agent-contact-link" href="<?php echo $whatsapp; ?>" target="_blank" rel="noopener" aria-label="واتساپ">
-                                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2a10 10 0 00-8.94 14.5L2 22l5.7-1.02A10 10 0 1012 2zm0 2a8 8 0 016.93 12.02.96.96 0 00-.1.67l.54 2.7-2.76-.5a1 1 0 00-.62.09A8 8 0 114 12a8 8 0 018-8zm3.73 9.73c-.2-.1-1.18-.58-1.36-.65-.18-.06-.32-.1-.46.1-.14.2-.52.65-.64.78-.12.13-.24.14-.44.04-.2-.1-.86-.32-1.63-1.02-.6-.54-1-1.2-1.12-1.4-.12-.2-.01-.3.09-.4.1-.1.2-.24.3-.36.1-.12.14-.2.22-.34.08-.14.04-.26-.02-.36-.06-.1-.46-1.1-.63-1.5-.17-.4-.34-.35-.46-.36h-.4c-.14 0-.36.05-.55.26-.18.2-.72.7-.72 1.7s.74 1.98.84 2.12c.1.14 1.45 2.2 3.52 3.08.5.22.9.36 1.2.46.5.16.96.14 1.32.08.4-.06 1.18-.48 1.34-.94.17-.46.17-.86.12-.94-.05-.08-.18-.12-.38-.22z"/></svg>
-                                    </a>
-                                <?php endif; ?>
-                            </div>
-                        </div>
-                        <div class="rs-agent-avatar">
-                            <img src="<?php echo esc_url($avatar_url); ?>" alt="<?php echo esc_attr($name ? $name : 'نماینده'); ?>" />
                         </div>
                     </div>
                 </div>
