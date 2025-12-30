@@ -409,15 +409,13 @@ function rs_agents_render_shortcode($atts) {
     }
 
     if (!$agents_data) {
-        return '<div class="rs-agents-empty">نماینده‌ای برای نمایش وجود ندارد.</div>';
+        $link = 'https://sales.dede.ir/%d8%af%d8%b1%d8%ae%d9%88%d8%a7%d8%b3%d8%aa-%d9%87%d9%85%da%a9%d8%a7%d8%b1%db%8c-%d8%af%d8%b1-%d9%81%d8%b1%d9%88%d8%b4-%d9%81%d8%b1%d9%88%d8%b4%da%af%d8%a7%d9%87%db%8c/';
+        return '<div class="rs-agents"><div class="rs-agents-empty"><div class="rs-agents-empty-content"><p class="rs-agents-empty-title">شرکت آژاکس در حال حاضر نماینده یا عاملی در این استان ندارد.</p><p class="rs-agents-empty-description">در صورت تمایل به همکاری در فروش فروشگاهی، لطفاً درخواست خود را برای ما ارسال نمایید:</p><a class="rs-agents-empty-button" href="' . esc_url($link) . '">ثبت درخواست همکاری در فروش فروشگاهی</a></div></div></div>';
     }
 
     ob_start();
     ?>
     <div class="rs-agents">
-        <div class="rs-agents-search">
-            <input type="text" placeholder="جستجو بر اساس شهر یا نماینده" data-agent-search />
-        </div>
         <div class="rs-agents-grid" data-agent-grid>
             <?php foreach ($agents_data as $agent) :
                 $name = isset($agent['name']) ? esc_html($agent['name']) : '';

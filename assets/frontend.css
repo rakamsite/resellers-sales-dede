@@ -21,6 +21,7 @@
 
 .rs-agents-search {
   margin-bottom: 20px;
+  display: none;
 }
 
 .rs-agents-search input {
@@ -153,8 +154,8 @@
 }
 
 .rs-agent-avatar {
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   overflow: hidden;
   background: #f2f4f7;
@@ -180,15 +181,46 @@
 
 .rs-agents-empty {
   padding: 20px;
-  border-radius: 12px;
-  background: #f9fafb;
-  border: 1px dashed #d0d5dd;
+  border: 1px solid #d0d5dd;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(16, 24, 40, 0.06);
+}
+
+.rs-agents-empty-content {
+  display: grid;
+  gap: 12px;
   text-align: center;
+  color: #1d2939;
+}
+
+.rs-agents-empty-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.rs-agents-empty-description {
+  margin: 0;
+  font-size: 16px;
+  color: #475467;
+}
+
+.rs-agents-empty-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  border-radius: 12px;
+  background: #2f2483;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 700;
 }
 
 @media (min-width: 900px) {
   .rs-agent-card {
-    grid-template-columns: 100px minmax(220px, 1.4fr) minmax(160px, 1fr);
+    grid-template-columns: 200px minmax(220px, 1.4fr) minmax(160px, 1fr);
     grid-template-areas: "avatar details info";
   }
 
@@ -199,8 +231,8 @@
     padding-right: 20px;
   }
   .rs-agent-avatar {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
   }
 }
 
@@ -210,7 +242,7 @@
   }
 
   .rs-agent-avatar {
-    height: 100px;
+    height: 200px;
   }
 
 }
