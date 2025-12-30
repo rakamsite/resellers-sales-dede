@@ -75,6 +75,7 @@ function rs_agents_render_meta_box($post) {
             $address = isset($agent['address']) ? esc_textarea($agent['address']) : '';
             $whatsapp = isset($agent['whatsapp']) ? esc_url($agent['whatsapp']) : '';
             $telegram = isset($agent['telegram']) ? esc_url($agent['telegram']) : '';
+            $order = isset($agent['order']) ? (int) $agent['order'] : ($index + 1);
             $image_id = isset($agent['image_id']) ? (int) $agent['image_id'] : 0;
             $image_url = $image_id ? wp_get_attachment_image_url($image_id, 'thumbnail') : '';
             ?>
@@ -103,6 +104,10 @@ function rs_agents_render_meta_box($post) {
                     <label>
                         لینک تلگرام
                         <input type="url" name="rs_agents[<?php echo esc_attr($index); ?>][telegram]" value="<?php echo $telegram; ?>" />
+                    </label>
+                    <label>
+                        ترتیب نمایش
+                        <input type="number" min="1" name="rs_agents[<?php echo esc_attr($index); ?>][order]" value="<?php echo esc_attr($order); ?>" />
                     </label>
                 </div>
                 <div class="rs-agent-media">
@@ -150,6 +155,10 @@ function rs_agents_render_meta_box($post) {
                 <label>
                     لینک تلگرام
                     <input type="url" name="rs_agents[__INDEX__][telegram]" />
+                </label>
+                <label>
+                    ترتیب نمایش
+                    <input type="number" min="1" name="rs_agents[__INDEX__][order]" value="__ORDER__" />
                 </label>
             </div>
             <div class="rs-agent-media">
@@ -200,6 +209,7 @@ function rs_agents_save_meta($post_id) {
         $whatsapp = isset($agent['whatsapp']) ? esc_url_raw($agent['whatsapp']) : '';
         $telegram = isset($agent['telegram']) ? esc_url_raw($agent['telegram']) : '';
         $image_id = isset($agent['image_id']) ? (int) $agent['image_id'] : 0;
+        $order = isset($agent['order']) ? (int) $agent['order'] : 0;
 
         if ($name === '' && $mobile === '' && $phone === '' && $address === '') {
             continue;
@@ -213,6 +223,7 @@ function rs_agents_save_meta($post_id) {
             'whatsapp' => $whatsapp,
             'telegram' => $telegram,
             'image_id' => $image_id,
+            'order' => $order,
         ];
     }
 
@@ -241,6 +252,19 @@ function rs_agents_enqueue_frontend_assets() {
 }
 add_action('wp_enqueue_scripts', 'rs_agents_enqueue_frontend_assets');
 
+function rs_agents_sort_by_order($a, $b) {
+    $order_a = isset($a['order']) ? (int) $a['order'] : 0;
+    $order_b = isset($b['order']) ? (int) $b['order'] : 0;
+    $order_a = $order_a > 0 ? $order_a : PHP_INT_MAX;
+    $order_b = $order_b > 0 ? $order_b : PHP_INT_MAX;
+
+    if ($order_a === $order_b) {
+        return 0;
+    }
+
+    return ($order_a < $order_b) ? -1 : 1;
+}
+
 function rs_agents_render_shortcode($atts) {
     $atts = shortcode_atts(
         [
@@ -265,7 +289,9 @@ function rs_agents_render_shortcode($atts) {
             if (!is_array($agents)) {
                 continue;
             }
+            usort($agents, 'rs_agents_sort_by_order');
             foreach ($agents as $agent) {
+                $agent['order'] = isset($agent['order']) ? (int) $agent['order'] : 0;
                 $agent['city'] = $post_item->post_title;
                 $agents_data[] = $agent;
             }
@@ -275,7 +301,9 @@ function rs_agents_render_shortcode($atts) {
         $agents = get_post_meta($post_id, RS_AGENTS_META_KEY, true);
         if (is_array($agents)) {
             $city_name = get_the_title($post_id);
+            usort($agents, 'rs_agents_sort_by_order');
             foreach ($agents as $agent) {
+                $agent['order'] = isset($agent['order']) ? (int) $agent['order'] : 0;
                 $agent['city'] = $city_name;
                 $agents_data[] = $agent;
             }

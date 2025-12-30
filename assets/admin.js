@@ -51,7 +51,9 @@ jQuery(function ($) {
 
   $('[data-add-agent]').on('click', function () {
     const index = container.find('[data-agent-item]').length;
-    const html = template.innerHTML.replace(/__INDEX__/g, index);
+    const html = template.innerHTML
+      .replace(/__INDEX__/g, index)
+      .replace(/__ORDER__/g, index + 1);
     const item = $(html);
     container.append(item);
     bindItem(item);
