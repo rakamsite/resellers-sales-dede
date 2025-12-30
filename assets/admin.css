@@ -16,6 +16,7 @@
 .rs-agent-fields {
   display: grid;
   gap: 12px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .rs-agent-fields label {
@@ -27,6 +28,20 @@
 .rs-agent-fields input,
 .rs-agent-fields textarea {
   width: 100%;
+}
+
+.rs-agent-field--span-2 {
+  grid-column: span 2;
+}
+
+@media (max-width: 900px) {
+  .rs-agent-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .rs-agent-field--span-2 {
+    grid-column: span 1;
+  }
 }
 
 .rs-agent-media {

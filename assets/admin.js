@@ -12,6 +12,9 @@ jQuery(function ($) {
 
   function bindItem(item) {
     item.find('[data-remove-agent]').on('click', function () {
+      if (!window.confirm('آیا از حذف این نماینده اطمینان دارید؟')) {
+        return;
+      }
       item.remove();
     });
 

@@ -136,6 +136,10 @@ function rs_agents_render_meta_box($post) {
                         <input type="text" name="rs_agents[<?php echo esc_attr($index); ?>][name]" value="<?php echo $name; ?>" />
                     </label>
                     <label>
+                        نام فروشگاه/شرکت
+                        <input type="text" name="rs_agents[<?php echo esc_attr($index); ?>][company]" value="<?php echo $company; ?>" />
+                    </label>
+                    <label class="rs-agent-field--span-2">
                         نوع
                         <select name="rs_agents[<?php echo esc_attr($index); ?>][type]">
                             <option value="">انتخاب کنید</option>
@@ -144,16 +148,20 @@ function rs_agents_render_meta_box($post) {
                         </select>
                     </label>
                     <label>
-                        نام فروشگاه/شرکت
-                        <input type="text" name="rs_agents[<?php echo esc_attr($index); ?>][company]" value="<?php echo $company; ?>" />
-                    </label>
-                    <label>
                         آدرس سایت
                         <input type="text" name="rs_agents[<?php echo esc_attr($index); ?>][website]" value="<?php echo $website; ?>" />
                     </label>
                     <label>
                         آی دی اینستاگرام
                         <input type="text" name="rs_agents[<?php echo esc_attr($index); ?>][instagram]" value="<?php echo $instagram; ?>" />
+                    </label>
+                    <label>
+                        آی دی تلگرام
+                        <input type="text" name="rs_agents[<?php echo esc_attr($index); ?>][telegram]" value="<?php echo $telegram; ?>" />
+                    </label>
+                    <label>
+                        شماره واتساپ
+                        <input type="text" name="rs_agents[<?php echo esc_attr($index); ?>][whatsapp]" value="<?php echo $whatsapp; ?>" />
                     </label>
                     <label>
                         شماره موبایل
@@ -166,14 +174,6 @@ function rs_agents_render_meta_box($post) {
                     <label>
                         آدرس
                         <textarea name="rs_agents[<?php echo esc_attr($index); ?>][address]" rows="3"><?php echo $address; ?></textarea>
-                    </label>
-                    <label>
-                        شماره واتساپ
-                        <input type="text" name="rs_agents[<?php echo esc_attr($index); ?>][whatsapp]" value="<?php echo $whatsapp; ?>" />
-                    </label>
-                    <label>
-                        آی دی تلگرام
-                        <input type="text" name="rs_agents[<?php echo esc_attr($index); ?>][telegram]" value="<?php echo $telegram; ?>" />
                     </label>
                     <label>
                         ترتیب نمایش
@@ -207,6 +207,10 @@ function rs_agents_render_meta_box($post) {
                     <input type="text" name="rs_agents[__INDEX__][name]" />
                 </label>
                 <label>
+                    نام فروشگاه/شرکت
+                    <input type="text" name="rs_agents[__INDEX__][company]" />
+                </label>
+                <label class="rs-agent-field--span-2">
                     نوع
                     <select name="rs_agents[__INDEX__][type]">
                         <option value="">انتخاب کنید</option>
@@ -215,16 +219,20 @@ function rs_agents_render_meta_box($post) {
                     </select>
                 </label>
                 <label>
-                    نام فروشگاه/شرکت
-                    <input type="text" name="rs_agents[__INDEX__][company]" />
-                </label>
-                <label>
                     آدرس سایت
                     <input type="text" name="rs_agents[__INDEX__][website]" />
                 </label>
                 <label>
                     آی دی اینستاگرام
                     <input type="text" name="rs_agents[__INDEX__][instagram]" />
+                </label>
+                <label>
+                    آی دی تلگرام
+                    <input type="text" name="rs_agents[__INDEX__][telegram]" />
+                </label>
+                <label>
+                    شماره واتساپ
+                    <input type="text" name="rs_agents[__INDEX__][whatsapp]" />
                 </label>
                 <label>
                     شماره موبایل
@@ -237,14 +245,6 @@ function rs_agents_render_meta_box($post) {
                 <label>
                     آدرس
                     <textarea name="rs_agents[__INDEX__][address]" rows="3"></textarea>
-                </label>
-                <label>
-                    شماره واتساپ
-                    <input type="text" name="rs_agents[__INDEX__][whatsapp]" />
-                </label>
-                <label>
-                    آی دی تلگرام
-                    <input type="text" name="rs_agents[__INDEX__][telegram]" />
                 </label>
                 <label>
                     ترتیب نمایش

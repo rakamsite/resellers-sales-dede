@@ -218,6 +218,13 @@
   font-weight: 700;
 }
 
+.rs-agents-empty-button:hover,
+.rs-agents-empty-button:focus {
+  background: #2f2483;
+  color: #ffffff;
+  text-decoration: none;
+}
+
 @media (min-width: 900px) {
   .rs-agent-card {
     grid-template-columns: 200px minmax(220px, 1.4fr) minmax(160px, 1fr);
